@@ -5,8 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert Currenty</title>
     <link rel="stylesheet" href="src/style/global.css">
+    <link rel="stylesheet" href="src/style/index.css">
 </head>
 <body>
-    <h1>Seja bem vindo</h1>
+    <header>
+        <figure>
+            <img src="src/assets/img/Frame 1.svg">
+        </figure>
+    </header>
+    <main>
+        <div id="conteiner">
+            <form action="">
+                <label>Valor</label>
+                <input type="text" placeholder="0,00" required>
+                <label>Moeda</label>
+                <select>
+                    <option value="US">Dólar Americano</option>
+                    <option value="EUR">Euro</option>
+                    <option value="JPY">Iene Japonês</option>
+                    <option value="ARS">PESO ARGENTINO</option>
+                    <option value="CNY">YUAN CHINÊS</option>
+                </select>
+                <button type="submit">Converter em reais</button>
+            </form>
+        </div>
+        <div id="content_convert">
+            <h2>Digita um valor para conversão</h2>
+            <p>0,00 Reais</p>
+        </div>
+    </main>
+
+    <script src="src/script/script.js">
+
+    </script>
 </body>
 </html>
