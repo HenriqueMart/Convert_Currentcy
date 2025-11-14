@@ -1,7 +1,28 @@
 let inputUser, optionConvert, convertValue, convert;
 
-function onConvertValue(){
-    document.querySelector("#content_convert h2").innerHTML = `${optionConvert} 1 = R$ ${convertValue.toFixed(2)}`;
+//Valores de câmbio
+let USD = 5.29;
+let EUR = 6.14;
+let JPY = 0.034;
+let ARS = 0.038;
+let CNY = 0.74;
+
+
+function onConvertValue(optionConvert, convertValue) {
+    try{
+        convert = inputUser.value * convertValue;
+        document.querySelector("#content_convert p").innerHTML = `${CurrencyBRL(convert.toFixed(2)).replace("R$", "")} Reais`;
+        document.querySelector("#content_convert h2").innerHTML = `${optionConvert} 1 =  ${CurrencyBRL(convertValue.toFixed(2))} Reais`;
+    }catch(error){
+        alert("Ocorreu um erro: " + error.message);
+    }0
+}
+
+function CurrencyBRL(value){
+    return Number(value).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    })
 }
 
 window.addEventListener("input", () => {
@@ -10,31 +31,27 @@ window.addEventListener("input", () => {
     inputUser.value = inputUser.value.replace(hasCharactersRegex, '');
 });
 
-
 window.addEventListener("submit", (evento) => {
     evento.preventDefault();
     optionConvert = document.querySelector("select").value;
     
     switch (optionConvert) {
         case "US":
-            convertValue = 5.29;
+            onConvertValue(optionConvert, USD);
         break;
         case "EUR":
-            convertValue = 6.14;
+            onConvertValue(optionConvert, EUR);
         break;
         case "JPY":
-            convertValue = 0.034;
+            onConvertValue(optionConvert, JPY);
         break;
         case "ARS":
-            convertValue = 0.038;
+            onConvertValue(optionConvert, ARS);
         break;
         case "CNY":
-            convertValue = 0.74;
+            onConvertValue(optionConvert, CNY);
         break;
         default:
             alert("Opção inválida");
-    }
-    onConvertValue();
-    convert = inputUser.value * convertValue;
-    document.querySelector("#content_convert p").innerHTML = `R$ ${convert.toFixed(2)} Reais`;
+    } 
 })
